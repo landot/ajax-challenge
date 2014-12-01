@@ -9,7 +9,7 @@
     </head>
     <body>
 
-        <main class="container">
+        <main class="container" ng-app="CommentApp" ng-controller="CommentController">
             <section>
                 <img src="img/super-bass-o-matic-76.jpg" alt="product picture" class="product-picture">
                 <h1>The Super Bass-o-Matic '76</h1>
@@ -26,6 +26,11 @@
                 http://angular-ui.github.io/bootstrap/#/rating
                 their script file is included below
                 -->
+                <form class="form" ng-submit="addComment()">
+
+
+
+                </form>
             </section>
 
             <section>
