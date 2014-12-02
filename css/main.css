@@ -11,3 +11,6 @@ body {
     margin-right: 10px;
 }
 
+table {
+	border: 1px solid #00B7FF;	
+}
