@@ -12,5 +12,7 @@ body {
 }
 
 table {
-	border: 1px solid #00B7FF;	
+	border-style: ridge;
+	border-width:2px; 
+	border-color: #000000;	
 }

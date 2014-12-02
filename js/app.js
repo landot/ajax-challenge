@@ -10,13 +10,14 @@ angular.module('CommentApp', ['ui.bootstrap'])
 
     .controller('CommentsController', function($scope, $http) {
 	    $scope.refreshComments = function() {
-        	$http.get(commentsUrl)
+        	$http.get(commentsUrl + "?order=-score")
             	.success(function (data) {
                     $scope.comments = data.results;
             	});
     	};
         $scope.refreshComments();
 
+        //adds comments to parse
         $scope.addComment = function() {
             $scope.inserting = true;        
             $http.post(commentsUrl, $scope.newComment)
@@ -29,12 +30,16 @@ angular.module('CommentApp', ['ui.bootstrap'])
                     $scope.inserting = false;
                 });
         };
+
+        //updates the comments
         $scope.updateTask = function(comment) {
             $http.put(commentsUrl + '/' + comment.objectId, comment)
                 .success(function() {
 					console.log("Comments updated")	
                 });
         };
+
+        //updates and increments the scores on each review
         $scope.incrementScore = function(comment, amount) {
             var postData = {
                 score: {
@@ -54,6 +59,8 @@ angular.module('CommentApp', ['ui.bootstrap'])
                     $scope.updating = false;
             	});
 		};
+
+		//deletes a comment when the checkbox is clicked
 		$scope.deleteComment = function(comment) {
 			$http.delete(commentsUrl + '/' + comment.objectId, comment)
 				.success(function() {
